@@ -3,6 +3,7 @@ Google ADK Training — Challenge Labs
 Hands-on labs for the Google Agent Development Kit (ADK), built and run in Vertex AI Colab Enterprise (Agent Platform), organized by training day.
 
 Contents
+
 Day 1 — Challenge Labs 1–5: custom tools, callbacks, multi-agent systems, agent workflows, and deployment to Vertex AI Agent Engine.
 Day 2 — (in progress).
 
