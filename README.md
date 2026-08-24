@@ -1,4 +1,4 @@
-# ADK Weather Agent — Challenge Labs 1–5
+# Day 1 - ADK Weather Agent — Challenge Labs 1–5
 
 Google Agent Development Kit (ADK) challenge labs, built and run in **Vertex AI
 Colab Enterprise (Agent Platform)**. Each notebook builds on the previous one, ending
