@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 640" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#555"/>
+    </marker>
+    <style>
+      .box { rx: 10; ry: 10; stroke-width: 2; }
+      .lbl { font-size: 13px; fill: #1a1a1a; }
+      .sub { font-size: 11px; fill: #555; }
+      .title { font-size: 20px; font-weight: 700; fill: #0b3d91; }
+      .edge { stroke: #555; stroke-width: 1.6; fill: none; marker-end: url(#arrow); }
+      .cb { stroke: #b8860b; stroke-width: 1.6; fill: none; stroke-dasharray: 5 4; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <text x="450" y="34" text-anchor="middle" class="title">ReadyNow! — FEMA Emergency Preparedness Agent</text>
+  <text x="450" y="54" text-anchor="middle" class="sub">Multi-agent system on Google ADK / Vertex AI Agent Engine</text>
+
+  <!-- User -->
+  <rect x="380" y="80" width="140" height="46" class="box" fill="#e8f0fe" stroke="#0b3d91"/>
+  <text x="450" y="102" text-anchor="middle" class="lbl" font-weight="600">User</text>
+  <text x="450" y="118" text-anchor="middle" class="sub">emergency questions</text>
+
+  <!-- Root -->
+  <rect x="330" y="180" width="240" height="70" class="box" fill="#d2e3fc" stroke="#0b3d91"/>
+  <text x="450" y="208" text-anchor="middle" class="lbl" font-weight="700">Root Coordinator Agent</text>
+  <text x="450" y="226" text-anchor="middle" class="sub">describes capabilities, routes tasks</text>
+  <text x="450" y="240" text-anchor="middle" class="sub">Gemini 2.5 Flash</text>
+
+  <!-- Callback box -->
+  <rect x="620" y="184" width="230" height="62" class="box" fill="#fff8e1" stroke="#b8860b"/>
+  <text x="735" y="206" text-anchor="middle" class="lbl" font-weight="600">Callbacks</text>
+  <text x="735" y="222" text-anchor="middle" class="sub">before: log + validate + scope</text>
+  <text x="735" y="236" text-anchor="middle" class="sub">after: log response</text>
+
+  <!-- User <-> Root -->
+  <path class="edge" d="M450,126 L450,180"/>
+  <path class="edge" d="M430,180 L430,132"/>
+  <!-- Root <-> Callbacks -->
+  <path class="cb" d="M570,205 L620,208"/>
+  <path class="cb" d="M620,228 L570,232"/>
+
+  <!-- Specialists row -->
+  <g>
+    <rect x="40" y="330" width="170" height="72" class="box" fill="#e6f4ea" stroke="#137333"/>
+    <text x="125" y="356" text-anchor="middle" class="lbl" font-weight="600">Weather Agent</text>
+    <text x="125" y="372" text-anchor="middle" class="sub">geocode + NWS</text>
+    <text x="125" y="386" text-anchor="middle" class="sub">forecast + alerts</text>
+  </g>
+  <g>
+    <rect x="230" y="330" width="170" height="72" class="box" fill="#e6f4ea" stroke="#137333"/>
+    <text x="315" y="356" text-anchor="middle" class="lbl" font-weight="600">Search Agent</text>
+    <text x="315" y="372" text-anchor="middle" class="sub">built-in</text>
+    <text x="315" y="386" text-anchor="middle" class="sub">Google Search</text>
+  </g>
+  <g>
+    <rect x="420" y="330" width="170" height="72" class="box" fill="#e6f4ea" stroke="#137333"/>
+    <text x="505" y="356" text-anchor="middle" class="lbl" font-weight="600">Routes Agent</text>
+    <text x="505" y="372" text-anchor="middle" class="sub">Maps Directions</text>
+    <text x="505" y="386" text-anchor="middle" class="sub">/ OSRM fallback</text>
+  </g>
+  <g>
+    <rect x="610" y="330" width="170" height="72" class="box" fill="#e6f4ea" stroke="#137333"/>
+    <text x="695" y="356" text-anchor="middle" class="lbl" font-weight="600">Safety Q&amp;A Agent</text>
+    <text x="695" y="372" text-anchor="middle" class="sub">preparedness</text>
+    <text x="695" y="386" text-anchor="middle" class="sub">guidance</text>
+  </g>
+
+  <!-- Root to specialists (AgentTool) -->
+  <path class="edge" d="M360,250 C300,290 200,300 125,330"/>
+  <path class="edge" d="M400,250 C370,290 330,305 315,330"/>
+  <path class="edge" d="M500,250 C505,290 505,305 505,330"/>
+  <path class="edge" d="M540,250 C610,290 660,305 695,330"/>
+  <text x="250" y="300" class="sub" fill="#137333">delegates via AgentTool</text>
+
+  <!-- Validate/Refine workflow -->
+  <rect x="300" y="470" width="300" height="110" class="box" fill="#fce8e6" stroke="#a50e0e"/>
+  <text x="450" y="494" text-anchor="middle" class="lbl" font-weight="700">Validate → Refine Workflow</text>
+  <text x="450" y="510" text-anchor="middle" class="sub">SequentialAgent</text>
+  <rect x="320" y="522" width="120" height="44" class="box" fill="#fff" stroke="#a50e0e"/>
+  <text x="380" y="542" text-anchor="middle" class="lbl">Validate</text>
+  <text x="380" y="557" text-anchor="middle" class="sub">check draft</text>
+  <rect x="460" y="522" width="120" height="44" class="box" fill="#fff" stroke="#a50e0e"/>
+  <text x="520" y="542" text-anchor="middle" class="lbl">Refine</text>
+  <text x="520" y="557" text-anchor="middle" class="sub">rewrite</text>
+  <path class="edge" d="M440,544 L460,544"/>
+
+  <!-- Root to workflow -->
+  <path class="edge" d="M470,250 C480,360 470,420 460,470"/>
+  <text x="486" y="440" class="sub" fill="#a50e0e">refine answers</text>
+
+  <!-- External services footnote -->
+  <text x="450" y="614" text-anchor="middle" class="sub">External data: National Weather Service · Open-Meteo geocoding · Google Maps Directions / OSRM · Google Search</text>
+  <text x="450" y="630" text-anchor="middle" class="sub">Auth: Application Default Credentials (ADC) — no hardcoded API keys · Deployed to Vertex AI Agent Engine</text>
+</svg>
